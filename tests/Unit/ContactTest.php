@@ -8,23 +8,43 @@ use Tests\TestCase;
 
 class ContactTest extends TestCase {
 
-    public function testListarContatos() {
+    public function testDBObterContatos() {
         $this->assertTrue( false );
     }
 
-    public function testGravarContatoAdicionado() {
+    public function testDBGravarContatoAdicionado() {
         $this->assertTrue( false );
     }
 
-    public function testGravarContatoEditado() {
+    public function testDBObterContatoParaEditar() {
         $this->assertTrue( false );
     }
 
-    public function testDeletarContato() {
+    public function testDBGravarContatoEditado() {
         $this->assertTrue( false );
     }
 
-    public function testObterContatoParaEditar() {
+    public function testDBDeletarContato() {
+        $this->assertTrue( false );
+    }
+
+    public function testAPIObterContatos() {
+        $this->assertTrue( false );
+    }
+
+    public function testAPIObterContato() {
+        $this->assertTrue( false );
+    }
+
+    public function testAPIGravarNovoContato() {
+        $this->assertTrue( false );
+    }
+
+    public function testAPIGravarContatoEditado() {
+        $this->assertTrue( false );
+    }
+
+    public function testAPIDeletarContato() {
         $this->assertTrue( false );
     }
 
