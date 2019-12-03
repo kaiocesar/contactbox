@@ -5,9 +5,23 @@ namespace Tests\Unit;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\DB;
+use Faker\Generator as Faker;
 use Tests\TestCase;
 
+
 class ContactTest extends TestCase {
+
+    protected $faker;
+
+    public function setUp() {
+        parent::setUp();
+        $this->faker = Faker::create();
+    }
+
+    public function tearDown() {
+        $this->artisan( 'migrate:reset' );
+        parent::tearDown();
+    }
 
     public function testDBObterContatos() {
         $contacts = DB::select('SELECT * FROM contacts');
