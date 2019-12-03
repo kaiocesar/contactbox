@@ -5,23 +5,10 @@ namespace Tests\Unit;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\DB;
-use Faker\Generator as Faker;
 use Tests\TestCase;
 
 
 class ContactTest extends TestCase {
-
-    protected $faker;
-
-    public function setUp() {
-        parent::setUp();
-        $this->faker = Faker::create();
-    }
-
-    public function tearDown() {
-        $this->artisan( 'migrate:reset' );
-        parent::tearDown();
-    }
 
     public function testDBObterContatos() {
         $contacts = DB::select('SELECT * FROM contacts');
@@ -45,23 +32,28 @@ class ContactTest extends TestCase {
     }
 
     public function testAPIObterContatos() {
-        $this->assertTrue( false );
+        $response = $this->get( '/api/contatos' );
+        $response->assertStatus( 200 );
     }
 
     public function testAPIObterContato() {
-        $this->assertTrue( false );
+        $response = $this->get( '/api/contato/1' );
+        $response->assertStatus( 200 );
     }
 
     public function testAPIGravarNovoContato() {
-        $this->assertTrue( false );
+        $response = $this->post( '/api/contatos' );
+        $response->assertStatus( 200 );
     }
 
     public function testAPIGravarContatoEditado() {
-        $this->assertTrue( false );
+        $response = $this->post( '/api/contato/1/edit' );
+        $response->assertStatus( 200 );
     }
 
     public function testAPIDeletarContato() {
-        $this->assertTrue( [] );
+        $response = $this->delete( '/api/contato/1' );
+        $response->assertStatus( 200 );
     }
 
 }
