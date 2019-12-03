@@ -4,12 +4,14 @@ namespace Tests\Unit;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 class ContactTest extends TestCase {
 
     public function testDBObterContatos() {
-        $this->assertTrue( false );
+        $contacts = DB::select('SELECT * FROM contacts');
+        $this->assertTrue( len( $contacts ) == 0 );
     }
 
     public function testDBGravarContatoAdicionado() {
@@ -45,7 +47,7 @@ class ContactTest extends TestCase {
     }
 
     public function testAPIDeletarContato() {
-        $this->assertTrue( false );
+        $this->assertTrue( [] );
     }
 
 }
