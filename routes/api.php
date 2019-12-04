@@ -9,8 +9,22 @@ use Illuminate\Http\Request;
 */
 
 
-// Route::
+Route::get('contatos', function() {
+    return [];
+});
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::post('contatos', function() {
+    return [];
+});
+
+Route::get('contatos/{contact_id}', function() {
+    return [];
+});
+
+Route::put('contatos/{contact_id}', function() {
+    return [];
+});
+
+Route::delete('contatos/{contact_id}', function() {
+    return [];
+});

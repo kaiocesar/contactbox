@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model {
 
-    public $table = 'contact';
+    public $table = 'contacts';
 
     public $fillable = [
         'id',
@@ -14,7 +14,7 @@ class Contact extends Model {
         'activity',
         'mobile',
         'email',
-        'create_at',
+        'created_at',
         'last_contact',
         'status'
     ];

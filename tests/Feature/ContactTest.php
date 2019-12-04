@@ -13,7 +13,7 @@ class ContactTest extends TestCase {
     }
 
     public function testAPIObterContato() {
-        $response = $this->get( '/api/contato/1' );
+        $response = $this->get( '/api/contatos/1' );
         $response->assertStatus( 200 );
     }
 
@@ -23,12 +23,12 @@ class ContactTest extends TestCase {
     }
 
     public function testAPIGravarContatoEditado() {
-        $response = $this->post( '/api/contato/1/edit' );
+        $response = $this->put( '/api/contatos/1' );
         $response->assertStatus( 200 );
     }
 
     public function testAPIDeletarContato() {
-        $response = $this->delete( '/api/contato/1' );
+        $response = $this->delete( '/api/contatos/1' );
         $response->assertStatus( 200 );
     }
 
