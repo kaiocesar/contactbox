@@ -8,23 +8,12 @@ use Illuminate\Http\Request;
 |--------------------------------------------------------------------------
 */
 
+Route::get( 'contacts', 'ContactsController@index' );
 
-Route::get('contatos', function() {
-    return [];
-});
+Route::post( 'contacts', 'ContactsController@store' );
 
-Route::post('contatos', function() {
-    return [];
-});
+Route::get( 'contacts/{contact_id}', 'ContactsController@show' );
 
-Route::get('contatos/{contact_id}', function() {
-    return [];
-});
+Route::put( 'contacts/{contact_id}', 'ContactsController@update' );
 
-Route::put('contatos/{contact_id}', function() {
-    return [];
-});
-
-Route::delete('contatos/{contact_id}', function() {
-    return [];
-});
+Route::delete( 'contacts/{contact_id}', 'ContactsController@destroy' );

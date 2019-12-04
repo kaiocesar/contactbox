@@ -13,23 +13,23 @@ class ContactTest extends TestCase {
 
     public function testDBObterContatos() {
         $contacts = DB::select('SELECT * FROM contacts');
-        $this->assertTrue( count( $contacts ) > 0 );
+        $this->assertTrue( count( $contacts ) == 1 );
     }
 
-    // public function testDBGravarContatoAdicionado() {
-    //     $this->assertTrue( false );
-    // }
+    public function testDBGravarContatoAdicionado() {
+        $this->assertTrue( false );
+    }
 
-    // public function testDBObterContatoParaEditar() {
-    //     $this->assertTrue( false );
-    // }
+    public function testDBObterContatoParaEditar() {
+        $this->assertTrue( false );
+    }
 
-    // public function testDBGravarContatoEditado() {
-    //     $this->assertTrue( false );
-    // }
+    public function testDBGravarContatoEditado() {
+        $this->assertTrue( false );
+    }
 
-    // public function testDBDeletarContato() {
-    //     $this->assertTrue( false );
-    // }
+    public function testDBDeletarContato() {
+        $this->assertTrue( false );
+    }
 
 }
