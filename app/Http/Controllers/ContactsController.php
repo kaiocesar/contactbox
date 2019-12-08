@@ -3,39 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Contact;
 
-class ContactsController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+class ContactsController extends Controller {
+
+    public function index() {
+        return Contact::where( 'status', '1' )
+            ->orderBy('last_contact', 'desc')
+            ->take(15)
+            ->get();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $contact = new Contact();
+        $contact->name = $request->name;
+        $contact->activity = $request->activity;
+        $contact->mobile = $request->mobile;
+        $contact->email = $request->email;
+        $contact->last_contact = $request->last_contact;
+        $contact->status = $request->status;
+
+        return $contact->save();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function show($id) {
+        return Contact::find($id);
     }
 
     /**
@@ -47,7 +39,7 @@ class ContactsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return [];
     }
 
     /**
@@ -58,6 +50,6 @@ class ContactsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return [];
     }
 }
