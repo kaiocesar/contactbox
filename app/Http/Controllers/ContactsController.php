@@ -15,15 +15,26 @@ class ContactsController extends Controller {
     }
 
     public function store(Request $request) {
-        $contact = new Contact();
-        $contact->name = $request->name;
-        $contact->activity = $request->activity;
-        $contact->mobile = $request->mobile;
-        $contact->email = $request->email;
-        $contact->last_contact = $request->last_contact;
-        $contact->status = $request->status;
+        try {
+            $contact = new Contact();
+            $contact->name = $request->name;
+            $contact->activity = $request->activity;
+            $contact->mobile = $request->mobile;
+            $contact->email = $request->email;
+            $contact->last_contact = $request->last_contact;
+            $contact->status = $request->status;
+            $contact->save();
+        } catch (\Illuminate\Database\QueryException $e) {
+            return [
+                "error" =>  $e
+            ];
+        }
 
-        return $contact->save();
+        return [
+            "error" => false,
+            "contact" => $contact
+        ];
+
     }
 
     public function show($id) {
