@@ -26,7 +26,7 @@ class ContactsController extends Controller {
             $contact->save();
         } catch (\Illuminate\Database\QueryException $e) {
             return [
-                "error" =>  $e
+                "error" => $e
             ];
         }
 
@@ -38,29 +38,43 @@ class ContactsController extends Controller {
     }
 
     public function show($id) {
-        return Contact::find($id);
+        $contact = Contact::find($id);
+        if (!$contact) return [];
+        return $contact;
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        return [];
+    public function update(Request $request, $id) {
+        $contact = Contact::find($id);
+
+        if ($contact) {
+            try {
+                $contact->name = $request->name;
+                $contact->activity = $request->activity;
+                $contact->mobile = $request->mobile;
+                $contact->email = $request->email;
+                $contact->save();
+            } catch (\Illuminate\Database\QueryException $e) {
+                return [
+                    "error" => $e
+                ];
+            }
+        }
+        return [
+            "error" => false,
+            "contact" => $contact
+        ];
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        return [];
+    public function destroy($id) {
+        try {
+            Contact::destroy($id);
+        } catch (\Illuminate\Database\QueryException $e) {
+            return [
+                "error" => $e
+            ];
+        }
+        return [
+            "error" => false
+        ];
     }
 }
