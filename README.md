@@ -27,3 +27,7 @@ Execute a migrate
 e
 
 `php artisan serve` 
+
+
+#### consumo dos endpoint via curl
+`php artisan route:list`
