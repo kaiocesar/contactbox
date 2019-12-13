@@ -7,7 +7,17 @@ use App\Contact;
 
 class ContactsController extends Controller {
 
-    public function index() {
+    public function index(Request $request) {
+
+        if ($search = $request->query('search')) {
+            return Contact::orWhere('name', 'LIKE', "%{$search}%")
+                ->orWhere('activity', 'LIKE', "%{$search}%")
+                ->orWhere('mobile', 'LIKE', "%{$search}%")
+                ->orWhere('email', 'LIKE', "%{$search}%")
+                ->orderBy('last_contact', 'desc')
+                ->get();
+        }
+
         return Contact::where( 'status', '1' )
             ->orderBy('last_contact', 'desc')
             ->take(15)
