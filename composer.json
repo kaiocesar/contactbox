@@ -12,6 +12,7 @@
         "barryvdh/laravel-cors": "^0.11.4",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
+        "laravel/socialite": "^4.3",
         "laravel/tinker": "^1.0",
         "laravel/ui": "^1.1"
     },
