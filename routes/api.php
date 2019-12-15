@@ -17,3 +17,5 @@ Route::get( 'contacts/{contact_id}', 'ContactsController@show' );
 Route::put( 'contacts/{contact_id}', 'ContactsController@update' );
 
 Route::delete( 'contacts/{contact_id}', 'ContactsController@destroy' );
+
+Route::put( 'contacting/{contact_id}', 'ContactsController@contacting' );

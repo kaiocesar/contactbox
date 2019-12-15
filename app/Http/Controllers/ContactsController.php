@@ -53,6 +53,25 @@ class ContactsController extends Controller {
         return $contact;
     }
 
+    public function contacting(Request $request, $id) {
+        $contact = Contact::find($id);
+
+        if ($contact) {
+            try {
+                $contact->last_contact = $request->last_contact;
+                $contact->save();
+            } catch (\Illuminate\Database\QueryException $e) {
+                return [
+                    "error" => $e
+                ];
+            }
+        }
+        return [
+            "error" => false,
+            "contact" => $contact
+        ];
+    }
+
     public function update(Request $request, $id) {
         $contact = Contact::find($id);
 
