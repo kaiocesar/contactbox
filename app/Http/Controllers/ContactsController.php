@@ -9,7 +9,7 @@ class ContactsController extends Controller {
 
     public function index(Request $request) {
 
-        if ($search = $request->query('search')) {
+        if ( $search =  filter_var( $request->query('search'), FILTER_SANITIZE_STRING) ) {
             return Contact::orWhere('name', 'LIKE', "%{$search}%")
                 ->orWhere('activity', 'LIKE', "%{$search}%")
                 ->orWhere('mobile', 'LIKE', "%{$search}%")
