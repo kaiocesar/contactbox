@@ -26,6 +26,13 @@ class ContactsController extends Controller {
 
     public function store(Request $request) {
         try {
+            $validatedData = $request->validate([
+             'name' => 'required',
+             'activity' => 'required',
+             'mobile' => 'required',
+             'email' => required|email'
+            ]);
+
             $contact = new Contact();
             $contact->name = $request->name;
             $contact->activity = $request->activity;
