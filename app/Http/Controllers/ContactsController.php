@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Contact;
 
@@ -26,12 +27,19 @@ class ContactsController extends Controller {
 
     public function store(Request $request) {
         try {
-            $validatedData = $request->validate([
-             'name' => 'required',
-             'activity' => 'required',
-             'mobile' => 'required',
-             'email' => required|email'
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|max:56',
+                'activity' => 'required|max:56',
+                'mobile' => 'required|max:56',
+                'email' => 'required|unique:contacts|max:128',
             ]);
+
+            if ( $validator->fails() ) {
+                return response()->json(
+                    $validator->errors(),
+                    400
+                );
+            }
 
             $contact = new Contact();
             $contact->name = $request->name;
@@ -40,11 +48,13 @@ class ContactsController extends Controller {
             $contact->email = $request->email;
             $contact->last_contact = $request->last_contact;
             $contact->status = $request->status;
-            $contact->save();
+
+            $contact->salvar();
+
         } catch (\Illuminate\Database\QueryException $e) {
-            return [
+            return reponse()->json([
                 "error" => $e
-            ];
+            ], 500);
         }
 
         return [
