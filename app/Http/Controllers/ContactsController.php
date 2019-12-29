@@ -69,7 +69,7 @@ class ContactsController extends Controller {
         return $contact;
     }
 
-    public function contacting(Request $request, $id) {
+    public function contacting( $id ) {
         $contact = Contact::find($id);
 
         if ($contact) {
