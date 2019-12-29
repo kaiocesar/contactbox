@@ -46,10 +46,9 @@ class ContactsController extends Controller {
             $contact->activity = $request->activity;
             $contact->mobile = $request->mobile;
             $contact->email = $request->email;
-            $contact->last_contact = $request->last_contact;
             $contact->status = $request->status;
 
-            $contact->salvar();
+            $contact->save();
 
         } catch (\Illuminate\Database\QueryException $e) {
             return reponse()->json([

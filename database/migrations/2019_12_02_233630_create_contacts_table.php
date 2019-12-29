@@ -20,7 +20,9 @@ class CreateContactsTable extends Migration
             $table->string( 'mobile' );
             $table->string( 'email' )->unique();
             $table->boolean( 'status' );
-            $table->dateTime( 'last_contact' );
+            $table->dateTime( 'last_contact' )
+                ->nullable()
+                ->default(null);
             $table->timestamps();
         });
     }
