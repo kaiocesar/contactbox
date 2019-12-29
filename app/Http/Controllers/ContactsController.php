@@ -74,7 +74,7 @@ class ContactsController extends Controller {
 
         if ($contact) {
             try {
-                $contact->last_contact = $request->last_contact;
+                $contact->last_contact = date( 'Y-m-d H:i:s' );
                 $contact->save();
             } catch (\Illuminate\Database\QueryException $e) {
                 return [
