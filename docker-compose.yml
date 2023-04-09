@@ -14,19 +14,19 @@ services:
         depends_on:
             - redis
         networks:
-            - laravel-9
+            - laravel-6
 
     # nginx
     nginx:
         image: nginx:alpine
         restart: unless-stopped
         ports: 
-            - "8989:80"
+            - "8010:80"
         volumes: 
             - ./:/var/www
             - ./docker/nginx/:/etc/nginx/conf.d/
         networks: 
-            - laravel-9
+            - laravel-6
 
     # db mysql
     mysql:
