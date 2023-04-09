@@ -42,7 +42,7 @@ services:
         ports:
             - "3388:3306"
         networks:
-            - laravel-9
+            - laravel-6
 
     # queue
     queue:
@@ -55,14 +55,14 @@ services:
             - redis
             - app
         networks:
-            - laravel-9
+            - laravel-6
 
     # redis
     redis:
         image: redis:latest
         networks:
-            - laravel-9
+            - laravel-6
 
 networks:
-    laravel-9:
+    laravel-6:
         driver: bridge
